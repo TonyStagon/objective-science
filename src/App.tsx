@@ -9,6 +9,7 @@ import {
   Mail,
   MapPin,
   Menu,
+  Microscope,
   Network,
   Phone,
   Users,
@@ -23,10 +24,10 @@ const clinicImage = 'https://images.pexels.com/photos/4031522/pexels-photo-40315
 const studentsImage = 'https://images.pexels.com/photos/8442366/pexels-photo-8442366.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
 
 const services = [
-  { icon: Beaker, title: 'Research & Innovation', text: 'From fundamental research to applied solutions, we turn scientific discovery into real-world impact.', tone: 'blue' },
-  { icon: Atom, title: 'Engineering & Scientific Services', text: 'Specialised engineering, clinical engineering and nuclear science services for complex challenges.', tone: 'blue' },
-  { icon: Factory, title: 'Industry Solutions', text: 'Applied expertise for industrial performance, process optimisation and risk reduction.', tone: 'red' },
-  { icon: GraduationCap, title: 'Student Development', text: 'Supporting and nurturing the next generation of scientific talent through mentorship and training.', tone: 'amber' },
+  { icon: Beaker, title: 'Clinical Education', text: 'Coordination and management of training activities and resources for radiographers in nuclear medicine.', tone: 'blue' },
+  { icon: GraduationCap, title: 'Student Development', text: 'Equipping and building a community of effective scientists who will shape the future of science.', tone: 'blue' },
+  { icon: Factory, title: 'Technical Support Services', text: 'Advisory in nuclear research, radiochemistry, nuclear chemistry and nuclear waste management.', tone: 'red' },
+  { icon: Microscope, title: 'Scientific Consulting', text: 'Advisory in nuclear medicine, radiochemistry and radiopharmaceutical sciences.', tone: 'amber' },
 ];
 
 const projects = [
@@ -38,11 +39,9 @@ const projects = [
 
 function Logo() {
   return (
-    <div className="logo" aria-label="Objective Scientific">
-      <div className="logo-mark"><Atom size={27} strokeWidth={1.7} /><span /></div>
-      <div><strong>Objective</strong><b>Scientific</b></div>
-      <div className="logo-dots"><i /><i /><i /><i /><i /></div>
-    </div>
+    <a className="logo" href="#top" aria-label="Objective Scientific home">
+      <img src="https://www.objective-scientific.co.za/wp-content/uploads/2025/03/Logo-1.png" alt="Objective Scientific" />
+    </a>
   );
 }
 
@@ -58,7 +57,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="site-shell">
+    <div className="site-shell" id="top">
       <header className="site-header">
         <div className="container nav-wrap">
           <Logo />
@@ -66,7 +65,7 @@ function App() {
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
           <nav className={menuOpen ? 'nav-links is-open' : 'nav-links'}>
-            <a href="#about">About</a><a href="#services">Services</a><a href="#research">Research & Innovation</a><a href="#students">Student Development</a><a href="#contact">Contact</a>
+            <a href="#about">About Us</a><a href="#services">Services</a><a href="#research">Team</a><a href="#students">Student Development</a><a href="#contact">Contact Us</a>
             <Button>Let&apos;s Collaborate</Button>
           </nav>
         </div>
@@ -76,9 +75,9 @@ function App() {
         <section className="hero">
           <div className="hero-background"><img src={heroImage} alt="Scientist working with a microscope" /></div>
           <div className="container hero-content">
-            <SectionLabel>RESEARCH <em /> ENGINEERING <em /> INNOVATION</SectionLabel>
-            <h1>Advancing science<br />through research,<br />engineering and<br />innovation.</h1>
-            <p>We provide state-of-the-art research, industrial analysis,<br className="desktop-only" /> clinical engineering and nuclear sciences, translating<br className="desktop-only" /> scientific expertise into practical technology and<br className="desktop-only" /> economic impact.</p>
+            <SectionLabel>RESEARCH <em /> EDUCATION <em /> INNOVATION</SectionLabel>
+            <h1>Advancing science<br />through research,<br />education and<br />innovation.</h1>
+            <p>Coordination and management of training activities and<br className="desktop-only" /> resources for radiographers in nuclear medicine,<br className="desktop-only" /> alongside scientific consulting and research services.</p>
             <Button>Discover Our Services</Button>
           </div>
           <div className="hero-network network-lines" />
@@ -87,8 +86,8 @@ function App() {
         <section className="section services" id="services">
           <div className="container">
             <div className="section-intro">
-              <div><SectionLabel>WHAT WE DO</SectionLabel><h2>Specialised services<br />for a smarter, safer,<br />more sustainable future.</h2></div>
-              <p>We combine scientific knowledge, advanced technology<br className="desktop-only" /> and real-world experience to help our clients solve<br className="desktop-only" /> complex challenges and create sustainable value<br className="desktop-only" /> across multiple sectors.</p>
+              <div><SectionLabel>WHAT WE DO</SectionLabel><h2>Scientific services<br />for a healthier, safer,<br />more sustainable future.</h2></div>
+              <p>We combine scientific knowledge, clinical expertise and<br className="desktop-only" /> real-world experience to help clients solve complex<br className="desktop-only" /> challenges and create practical, sustainable value.</p>
             </div>
             <div className="service-grid">
               {services.map(({ icon: Icon, title, text, tone }) => <article className="service-card" key={title}><div className={`service-icon ${tone}`}><Icon size={24} /></div><h3>{title}</h3><p>{text}</p><a href="#contact">Learn more <ArrowRight size={13} /></a></article>)}
@@ -109,10 +108,10 @@ function App() {
 
         <section className="section research-section" id="research"><div className="container"><div className="projects-heading"><div><SectionLabel>RESEARCH & INNOVATION</SectionLabel><h2>Turning ideas into solutions.</h2></div><a href="#contact" className="view-all">View all projects <ArrowRight size={14} /></a></div><div className="projects-grid">{projects.map(project => <article className="project-card" key={project.title}><img src={project.image} alt={project.title} /><div className="project-content"><h3>{project.title}</h3><div className="tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div><a href="#contact">Learn more <ArrowRight size={13} /></a></div></article>)}</div></div></section>
 
-        <section className="cta" id="contact"><div className="container cta-inner"><div><SectionLabel>LET&apos;S WORK TOGETHER</SectionLabel><h2>Have a scientific challenge?<br />Let&apos;s work together.</h2><p>Partner with us for expert solutions, innovative research and<br className="desktop-only" /> sustainable impact.</p></div><Button light>Get in Touch</Button><div className="cta-network"><Network size={150} /></div></div></section>
+        <section className="cta" id="contact"><div className="container cta-inner"><div><SectionLabel>LET&apos;S WORK TOGETHER</SectionLabel><h2>Have a scientific challenge?<br />Let&apos;s work together.</h2><p>Get in touch to discuss your needs, goals and a tailored<br className="desktop-only" /> scientific solution for your organisation.</p></div><Button light>Get in Touch</Button><div className="cta-network"><Network size={150} /></div></div></section>
       </main>
 
-      <footer className="footer"><div className="container footer-main"><div className="footer-brand"><Logo /><p>Science. Engineering. Innovation.<br />For a safer, healthier and more sustainable future.</p></div><div className="footer-col"><h4><MapPin size={13} /> South Africa</h4><p>Based in South Africa,<br />working across industries<br />and sectors.</p></div><div className="footer-col"><h4>Quick links</h4><a href="#about">About</a><a href="#services">Services</a><a href="#research">Research & Innovation</a><a href="#students">Student Development</a><a href="#contact">Contact</a></div><div className="footer-col"><h4>Get in touch</h4><a href="tel:+27111234567"><Phone size={13} /> +27 (0)11 123 4567</a><a href="mailto:info@objectivescientific.co.za"><Mail size={13} /> info@objectivescientific.co.za</a><p><MapPin size={13} /> Johannesburg, South Africa</p></div></div><div className="container footer-bottom"><span>© 2026 Objective Scientific. All rights reserved.</span><span>Privacy　·　Terms　·　Sitemap</span></div></footer>
+      <footer className="footer"><div className="container footer-main"><div className="footer-brand"><Logo /><p>Science. Engineering. Innovation.<br />For a safer, healthier and more sustainable future.</p></div><div className="footer-col"><h4><MapPin size={13} /> Our location</h4><p>5th Floor, Bloukrans Building,<br />18 Hilden RD, Lynnwood Manor,<br />Pretoria 0081</p></div><div className="footer-col"><h4>Quick links</h4><a href="#about">About Us</a><a href="#services">Services</a><a href="#research">Team</a><a href="#students">Student Development</a><a href="#contact">Contact Us</a></div><div className="footer-col"><h4>Get in touch</h4><a href="tel:+27120072278"><Phone size={13} /> +27 12 007 2278</a><a href="mailto:info@objective-scientific.co.za"><Mail size={13} /> info@objective-scientific.co.za</a><p><MapPin size={13} /> Mon - Fri: 8:00AM to 7:00PM</p></div></div><div className="container footer-bottom"><span>© 2024 Objective Scientific. All rights reserved.</span><span>Privacy　·　Terms　·　Sitemap</span></div></footer>
     </div>
   );
 }
